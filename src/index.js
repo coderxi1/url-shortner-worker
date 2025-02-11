@@ -39,9 +39,10 @@ const saveUrl = async (key, url, password) => {
   key = keyIsRandom ? await ensureRandomKey() : key
   const value = [Date.now().toString(), url].join('|')
   
-  const putOptions = !passwordCorrect || env.KEY_REMOVE ? { expirationTtl: env.KEY_ALIVE_SECONDS } : null
+  const putOptions = null
 
   if (!passwordCorrect) {
+    putOptions = env.KEY_REMOVE ? { expirationTtl: env.KEY_ALIVE_SECONDS } : null
     const host = new URL(url).host
     assert(hostInWhitelist(host), `host {${host}} is not in whitelist`)
     assert(keyIsRandom && !(await getUrl(key)), `key {${key}} already exists`)
