@@ -39,7 +39,7 @@ const saveUrl = async (key, url, password) => {
   key = keyIsRandom ? await ensureRandomKey() : key
   const value = [Date.now().toString(), url].join('|')
   
-  const putOptions = passwordCorrect || env.KEY_REMOVE ? { expirationTtl: env.KEY_ALIVE_SECONDS } : null
+  const putOptions = !passwordCorrect || env.KEY_REMOVE ? { expirationTtl: env.KEY_ALIVE_SECONDS } : null
 
   if (!passwordCorrect) {
     const host = new URL(url).host
