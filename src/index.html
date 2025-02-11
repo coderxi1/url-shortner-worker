@@ -206,7 +206,7 @@
         if (data.error) {
           alert('Error: ' + data.error);
         } else {
-          prompt('URL saved successfully with key: ' + data.key, location.origin + data.key)
+          prompt('URL saved successfully with key: ' + data.key, location.origin + '/' + data.key)
         }
       } catch (e) {
         console.error('Error occurred:', e);
