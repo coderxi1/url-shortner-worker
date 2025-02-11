@@ -1,0 +1,12 @@
+{
+  "name": "url-shortner-worker",
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "build": "node build.js"
+  },
+  "dependencies": {
+    "html-minifier": "^4.0.0",
+    "terser": "^5.38.1"
+  }
+}
